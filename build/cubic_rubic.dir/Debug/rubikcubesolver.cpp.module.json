@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "cubic_rubic.dir\\Debug\\RubikCubeSolver.obj",
+            "outputs": [
+                "C:\\Users\\arina\\OneDrive\\Desktop\\cubic-rubic\\build\\cubic_rubic.dir\\Debug\\vc145.pdb",
+                "cubic_rubic.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

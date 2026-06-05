@@ -1,0 +1,10 @@
+^C:\USERS\ARINA\ONEDRIVE\DESKTOP\CUBIC-RUBIC\BUILD\CMAKEFILES\669E246853964684DB2E5AF15ABF99CB\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/arina/OneDrive/Desktop/cubic-rubic -BC:/Users/arina/OneDrive/Desktop/cubic-rubic/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/arina/OneDrive/Desktop/cubic-rubic/build/cubic_rubic.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

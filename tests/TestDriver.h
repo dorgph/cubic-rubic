@@ -2,17 +2,19 @@
 
 #include "Common.h"
 #include "RubikCubeSolver/RubikCubeSolver.h"
+#include "Visualizer/Visualizer.h"
 
 class TestDriver {
 public:
     explicit TestDriver() = default;
 
-    void init() {
+    void init() const {
         std::cout << "Добро пожаловать в компьютерную сборку Кубика Рубика!\n\n";
         std::cout << "Пожалуйста, выберите интересующие Вас тесты:\n\n";
         std::cout << "[1]: Простые комбинации кубика Рубика;\n";
         std::cout << "[2]: Более продвинутые комбинации кубика Рубика;\n";
         std::cout << "[3]: Сложные комбинации кубика Рубика;\n";
+        std::cout << "[4]: Собрать рандомный тест визуально;\n";
         std::cout << "[0]: Остановить сборку кубика;\n";
 
         while (true) {
@@ -27,6 +29,8 @@ public:
                 runMediumTests();
             } else if (option == "3") {
                 runHardTests();
+            } else if (option == "4") {
+                runRandomVisualTest();
             } else if (option == "0") {
                 std::cout << "До скорой встречи!\n";
                 break;
@@ -43,7 +47,7 @@ private:
     const std::string BLUE = "\033[34m";
     const std::string RESET = "\033[0m";
 
-    void printSequence(const std::vector<std::string>& sequence) {
+    static void printSequence(const std::vector<std::string>& sequence) {
         if (sequence.empty()) {
             std::cout << "(Пусто)\n";
             return;
@@ -54,7 +58,7 @@ private:
         std::cout << "\n";
     }
 
-    void run(const std::string& name, const std::vector<std::string>& scramble) {
+    void run(const std::string& name, const std::vector<std::string>& scramble) const {
         std::cout << BLUE << "===============================================\n" << RESET;
         std::cout << YELLOW << "[ТЕСТ] " << name << "\n";
 
@@ -87,7 +91,7 @@ private:
         std::cout << RESET << BLUE << "===============================================\n" << RESET;
     }
 
-    void runEasyTests() {
+    void runEasyTests() const {
         std::cout << GREEN << "Простые тесты" << "\n\n" << RESET;
 
         run("Собранный кубик", {
@@ -110,7 +114,7 @@ private:
         });
     }
 
-    void runMediumTests() {
+    void runMediumTests() const {
         std::cout << YELLOW << "Более продвинутые тесты" << "\n\n" << RESET;
 
         run("3-цикл (U-Perm)", {
@@ -129,7 +133,7 @@ private:
         });
     }
 
-    void runHardTests() {
+    void runHardTests() const {
         std::cout << RED << "Сложные тесты" << "\n\n" << RESET;
 
         run("Случайная путаница", {
@@ -170,7 +174,51 @@ private:
         });
     }
 
-    void raiseError() {
+    static void runRandomVisualTest() {
+        std::vector<std::vector<std::string>> tests = {
+            {
+                "F2", "R'", "B'", "U", "R'", "L", "F'", "L", "F'", "B", "D'", "R",
+            "B", "L2", "U2", "B2", "U2", "R2", "D2", "U'"
+            },
+            {
+                "F'", "U2", "R2", "D2", "B2", "L", "D2", "B2", "L'", "R2",
+                "U2", "B'", "D", "U2", "L", "B'", "D'", "R'", "U'", "F2"
+            },
+            {
+                "U2", "F2", "R2", "D'", "B2", "D", "R2", "F2", "U", "L2",
+                "U'", "B'", "L", "U", "R'", "D'", "L2", "F'", "D", "R2"
+            },
+            {
+                "D2", "L2", "B2", "R2", "U", "L2", "U'", "R2",
+                "B2", "D'", "B", "L", "U", "R"
+            }
+        };
+
+        Visualizer::enableAnsi();
+        Visualizer::clearScreen();
+        Visualizer::hideCursor();
+
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<size_t> distribution(0, tests.size() - 1);
+        const std::vector<std::string>& scramble = tests[distribution(gen)];
+
+        RubikCube cube;
+        bool threeD = true;
+
+        Visualizer::animate(cube, scramble, 350, threeD, "РАЗБОРКА");
+
+        RubikCubeSolver solver(cube);
+        auto solution = solver.solve();
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(800));
+        Visualizer::animate(cube, solution, 350, threeD, "СБОРКА");
+
+        Visualizer::showCursor();
+        std::cout << "\nГотово. Собран?: " << (cube.solved() ? "ДА!" : "НЕТ...") << "\n";
+    }
+
+    void raiseError() const {
         const auto message = "Похоже, Вы ввели то, чего не существует в нашей Вселенной! Пожалуйста, попробуйте еще раз!\n";
         std::cout << RED << message << RESET;
     }

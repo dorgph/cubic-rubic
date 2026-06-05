@@ -1,0 +1,3 @@
+C:/Users/arina/OneDrive/Desktop/cubic-rubic/build/CMakeFiles/cubic_rubic.dir
+C:/Users/arina/OneDrive/Desktop/cubic-rubic/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/arina/OneDrive/Desktop/cubic-rubic/build/CMakeFiles/ZERO_CHECK.dir

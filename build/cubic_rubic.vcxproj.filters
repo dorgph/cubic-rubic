@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\src\RubikCube\RubikCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\src\RubikCubeSolver\RubikCubeSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\src\Visualizer\Visualizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\include\RubikCube\RubikCube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\include\RubikCubeSolver\RubikCubeSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\include\Visualizer\Visualizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\utils\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\utils\Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\tests\TestDriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\arina\OneDrive\Desktop\cubic-rubic\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{368DA94C-FBCB-3823-B675-8C16460996AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E22A0CD0-FCE0-3D53-B106-3CDC4DED3A2E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
